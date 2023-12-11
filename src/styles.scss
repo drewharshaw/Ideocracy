@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Muli:400,700');
+
+// :root {
+//     font-family: 'Muli';
+//     font-size: 62.5%; /* making rem calc base 10*/
+// }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scrollbar-gutter: stable;
+    font-size: 1rem;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Light & Dark theme */
+
+.light-theme {
+    // TODO add primeng way
+    // @include angular-material-theme($light-theme);
+    // @include custom-components-theme($light-theme);
+}
+
+.dark-theme {
+    // TODO add primeng way
+    // @include angular-material-theme($dark-theme);
+    // @include custom-components-theme($dark-theme);
+}
+
+
+/* Scroll bar styles - Firefox & IE not compatible */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #E0E0E0;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

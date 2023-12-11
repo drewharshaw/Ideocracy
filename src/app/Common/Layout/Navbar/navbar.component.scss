@@ -1,0 +1,133 @@
+@import '../../../../theme/variables.scss';
+
+.navbar {
+    position: fixed;
+    top: 0px;
+    height: $navbarHeight;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0px 40px;
+    z-index: 1001;
+
+    background-color: $primary-darkBlue;
+    color: white;
+    font-size: 1.6rem;
+
+    &-company {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 2.5rem;
+        margin-right: 30px;
+    }
+
+    &Item {
+        display: flex;
+        align-items: center;
+        margin-left: 20px;
+        cursor: pointer;
+
+        &-link {
+            text-decoration: none;
+            color: unset;
+            font-size: 1.8rem;
+        }
+
+        &-icon {
+            margin-right: 5px;
+            font-size: 1.8rem;
+        }
+
+        &-active {
+            font-weight: bold;
+            border-bottom: 1px solid white;
+            padding-bottom: 3px;
+        }
+
+        p-avatar {
+            padding-right: 10px;
+        }
+
+
+        &:hover {
+            & > a, p-avatar, & > span {
+                opacity: 0.4;
+                filter: alpha(opacity=40);
+            }
+
+            div {
+                display: block;
+                visibility: visible;
+                opacity: 1;
+                top: calc($navbarHeight - 27px);
+            }
+        }
+    }
+}
+
+.subMenu {
+    position: absolute;
+    top: 10px;
+    width: 120px;
+
+    transition: top 0.1s, visibility 0s, opacity 0.1s linear;
+
+    padding-top: 30px;
+
+    visibility: hidden;
+    opacity: 0;
+    display: flex;
+
+    &-container {
+        background-color: $primary-darkBlue;
+        padding: 10px;
+    }
+
+    &-large {
+        width: 160px;
+        color: grey;
+    }
+
+    &-item {
+        width: 100px;
+        padding: 2px;
+
+        &:not(:last-child) {
+            margin-bottom: 10px;
+        }
+
+        &:hover {
+            border-radius: 4px;
+            background-color: $app-lightBlue;
+        }
+
+        a, span {
+            font-size: 1.4rem;
+            color: white;
+        }
+    }
+
+    &-emptyMessage {
+        padding-bottom: 10px;
+    }
+}
+
+.list {
+    &-left {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding-left: 20px;
+    }
+
+    &-right {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding-left: 20px;
+
+        li:last-child {
+            min-width: 95px;
+        }
+    }
+}

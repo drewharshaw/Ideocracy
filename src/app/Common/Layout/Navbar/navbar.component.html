@@ -1,0 +1,85 @@
+<nav class="navbar">
+    <ul class="list-left">
+        <li>
+            <a routerLink="" class="navbarItem-link">
+                <span class="navbar-company">Ideocracy</span>
+            </a>
+        </li>
+        <ng-container
+            *ngFor="let item of leftItems; index as i"
+        >
+            <ng-container
+                [ngTemplateOutlet]="navItem"
+                [ngTemplateOutletContext]="{ $implicit: item, idx: i }"
+            ></ng-container>
+        </ng-container>
+    </ul>
+        <ul
+            *ngIf="!!(authService.currentUser$ | async)"
+            class="list-right"
+        >
+            <li class="navbarItem">
+                <span
+                    class="navbarItem-icon pi pi-fw pi-bell"
+                ></span>
+                <div class="subMenu subMenu-large">
+                    <ul class="subMenu-container">
+                        <a class="subMenu-emptyMessage">
+                            No Notifications
+                        </a>
+                    </ul>
+                </div>
+            </li>
+            <li class="navbarItem">
+                <p-avatar
+                    *ngIf="photoURL else profileIcon"
+                    [image]="photoURL"
+                    size="large"
+                    styleClass="navbarItem-icon"
+                ></p-avatar>
+                <ng-template #profileIcon>
+                    <span class="navbarItem-icon pi pi-fw pi-user"></span>
+                </ng-template>
+
+                <a> {{ fullName }}</a>
+                <div class="subMenu">
+                    <ul class="subMenu-container">
+                        <li
+                            class="subMenu-item"
+                            (click)="showSettingsDialog()"
+                        >
+                            <span  class="navbarItem-icon pi pi-fw pi-cog"></span>
+                            <a class="navbarItem-link">
+                                Settings
+                            </a>
+                        </li>
+                        <li
+                            class="subMenu-item"
+                            (click)="logout()"
+                        >
+                            <span  class="navbarItem-icon pi pi-power-off"></span>
+                            <a class="navbarItem-link">
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+</nav>
+
+<ng-template #navItem let-item>
+    <li
+        *ngIf="!!(authService.currentUser$ | async) && item.visible"
+        class="navbarItem"
+    >
+        <a
+            *ngIf="item.routerLink"
+            class="navbarItem-link"
+            routerLinkActive="navbarItem-active"
+            [routerLink]="item.routerLink"
+        >
+            {{ item.label }}
+        </a>
+    </li>
+</ng-template>

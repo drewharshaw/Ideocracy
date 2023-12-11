@@ -1,0 +1,221 @@
+<div class="home">
+    <nav
+        #navbarRef
+        class="navbar"
+        (scroll)="onScroll()"
+        [@fade]="navAnimateState"
+    >
+        <ul class="navbarList-left">
+            <li class="navbarItem">
+                <span class="navbar-company">Ideocracy</span>
+            </li>
+        </ul>
+
+        <ul class="navbarList-right">
+            <li class="navbarItem">
+                <a
+                    class="navbarItem-link"
+                    routerLink="/login"
+                >
+                    <span> Login </span>
+                </a>
+            </li>
+            <li
+                *ngIf="navAnimateState === animationState.solid else link"
+                class="navbarItem"
+
+            >
+                <button
+                    pButton
+                    type="button"
+                    routerLink="/signup"
+                    class="p-button-outlined"
+                >
+                    Sign Up
+                </button>
+            </li>
+            <ng-template #link>
+                <li class="navbarItem">
+                    <a
+                        class="navbarItem-link"
+                        routerLink="/signup"
+                    >
+                        <span> Sign Up </span>
+                    </a>
+                </li>
+            </ng-template>
+        </ul>
+    </nav>
+
+    <img class="coverPhoto" src="/assets/abstract-sparks.jpg" alt="cover photo"/>
+
+    <div class="main">
+
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-center">
+                <a
+                    class="footer-icon"
+                    href="https://www.linkedin.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <span class="fab fa-linkedin"></span>
+                </a>
+                <a
+                    class="footer-icon"
+                    href="https://www.facebook.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <span class="fab fa-facebook-f"></span>
+                </a>
+                <a
+                    class="footer-icon"
+                    href="https://www.instagram.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <span class="fab fa-instagram"></span>
+                </a>
+                <a
+                    class="footer-icon"
+                    href="https://www.twitter.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <span class="fab fa-x-twitter"></span>
+                </a>
+            </div>
+            <hr class="divider" />
+            <div class="footer-center">
+                <div>
+                    <span> Copyright © </span>
+                    <a
+                        class="footer-link"
+                        routerLink=""
+                    >
+                        Ideocracy LLC.
+                    </a>
+                    <span> {{ year }} </span>
+                </div>
+                <div>
+                    <span
+                        class="footer-link"
+                        (click)="termsVisible=true"
+                    >
+                        Terms
+                    </span>
+                    <span
+                        class="footer-link"
+                        (click)="privacyVisible=true"
+                    >
+                        Privacy
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+</div>
+
+
+<p-dialog
+    header="Term of Service"
+    class="terms"
+    [style]="{width: '60vw'}"
+    [(visible)]="termsVisible"
+    [dismissableMask]="true"
+    [modal]="true"
+    [draggable]="false"
+>
+    <p>  This agreement was last modified on December 10, 2023.  </p>
+    <p>Please read these Terms of Service ("Agreement", "Terms of Service") carefully before using Ideocracy ("the Service") operated by Ideocracy LLC. ("us", "we", or "our"). </p>
+
+    <h4>1. Acceptance of Terms</h4>
+    <p>By accessing or using the Service in any manner, you agree to be bound by these Terms of Service. If you do not agree to all the terms and conditions of this agreement, then you may not access the Service.</p>
+
+    <h4>2. User Accounts</h4>
+    <p>
+        a. In order to use certain features of the Service, you must create a user account. You are responsible for maintaining the confidentiality of your account and password.
+
+        b. You agree to notify us immediately of any unauthorized use of your account or any other breach of security.
+    </p>
+
+    <h4>3. User Content</h4>
+    <p>
+        a. Users may contribute content, including but not limited to text, photos, and videos ("User Content"). By submitting User Content, you grant us a non-exclusive, transferable, sub-licensable, royalty-free, worldwide license to use, store, display, reproduce, modify, create derivative works, and distribute your User Content on [Your Social Media Website].
+
+        b. You are solely responsible for your User Content and the consequences of posting or publishing it.
+    </p>
+
+    <h4>4. Code of Conduct</h4>
+    <p>
+        a. You agree not to use the Service for any purpose that is illegal or prohibited by these Terms of Service.
+
+        b. You agree not to harass, abuse, or harm other users.
+    </p>
+
+    <h4>5. Privacy Policy</h4>
+    <p>Please refer to our Privacy Policy for information on how we collect, use, and disclose information from our users.</p>
+
+    <h4>6. Termination</h4>
+    <p>We may terminate or suspend your account and bar access to the Service immediately, without prior notice or liability, under our sole discretion.</p>
+
+    <h4>7. Changes to this Agreement</h4>
+    <p>We reserve the right, at our sole discretion, to modify or replace these Terms of Service at any time.</p>
+
+    <h4>8. Contact Us</h4>
+    <p> {{ 'If you have any questions about these Terms of Service, please contact us at contact@ideocracy.io' }}</p>
+</p-dialog>
+
+<p-dialog
+    header="Privacy Policy"
+    [(visible)]="privacyVisible"
+    [dismissableMask]="true"
+    [style]="{width: '50vw'}"
+    [modal]="true"
+>
+    <p> This Privacy Policy was last modified on December 10, 2023. </p>
+    <p> Ideocracy LLC ("us", "we", or "our") operates Ideocracy (the "Service"). This page informs you of our policies regarding the collection, use, and disclosure of Personal Information when you use our Service. </p>
+
+    <h4>1. Information Collection and Use</h4>
+    <p>
+        a. We collect personal information that you provide directly to us when creating an account, using the Service, or contacting us.
+
+        b. The types of personal information collected may include, but are not limited to, your name, email address, date of birth, profile picture, and any other information you choose to provide.
+    </p>
+
+    <h4>2. Log Data</h4>
+    <p>
+        We may collect information that your browser sends whenever you visit our Service ("Log Data"). This Log Data may include information such as your computer's Internet Protocol ("IP") address, browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, and other statistics.
+    </p>
+
+    <h4>3. Cookies</h4>
+    <p>
+        a. Cookies are files with a small amount of data, which may include an anonymous unique identifier. Cookies are sent to your browser from a website and stored on your computer's hard drive.
+
+        b. We use "cookies" to collect information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service.
+    </p>
+
+    <h4>4. Use of Personal Information</h4>
+    <p>
+        a. We may use your personal information to provide and improve the Service, personalize your experience, and communicate with you.
+
+        b. We may also use your personal information for marketing or promotional purposes, but you can opt out of receiving such communications.
+    </p>
+
+    <h4>5. Data Security</h4>
+    <p> The security of your personal information is important to us, but please be aware that no method of transmission over the Internet or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your personal information, we cannot guarantee its absolute security. </p>
+
+    <h4>6. Changes to This Privacy Policy</h4>
+
+    <p> We reserve the right to update or change our Privacy Policy at any time. Your continued use of the Service after we post any modifications to the Privacy Policy on this page will constitute your acknowledgment of the modifications and your consent to abide and be bound by the modified Privacy Policy.</p>
+
+    <h4>7. Contact Us</h4>
+
+    <p>{{ 'If you have any questions about this Privacy Policy, please contact us at contact@ideocracy.io.' }}</p>
+</p-dialog>
+

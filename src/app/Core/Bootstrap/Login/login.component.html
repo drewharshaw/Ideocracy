@@ -1,0 +1,78 @@
+<app-navbar></app-navbar>
+<div class="login-container">
+    <div class="form-container">
+        <h1 class="form-title">Login</h1>
+
+        <form
+            class="form"
+            [formGroup]="form"
+        >
+            <div class="form-inputs">
+                <div>
+                    <span class="p-float-label">
+                        <input
+                            pInputText
+                            formControlName="username"
+                            id="login-username"
+                            class="form-field"
+                            type="text"
+                        />
+                        <label for="float-input">Username</label>
+                    </span>
+                    @if (username.invalid && username.errors &&
+                        (username.dirty || username.touched)) {
+                        <div>
+                            @if (form.get('username').hasError('required')) {
+                                <small class="form-error">
+                                    This field is required.
+                                </small>
+                            }
+                        </div>
+                    }
+                </div>
+                <div>
+                    <span class="p-float-label">
+                        <input
+                            pInputText
+                            formControlName="password"
+                            id="float-input"
+                            class="form-field"
+                            type="password"
+                        />
+                        <label for="float-input">Password</label>
+                    </span>
+                        @if (password.errors && password.touched) {
+                            <div>
+                                @if (password.hasError('required')) {
+                                <span class="form-error">
+                                    This field is required.
+                                </span>
+                                }
+                            </div>
+                        }
+                </div>
+            </div>
+            <p-checkbox
+                formControlName="rememberMe"
+                class="form-checkbox"
+                [binary]="true"
+                label="Remember me"
+            ></p-checkbox>
+            <p-button
+                type="submit"
+                class="p-button-raised"
+                label="Sign In"
+                (onClick)="login()"
+            ></p-button>
+            <div class="login-links">
+                <a routerLink="/forgotpassword">Forgot Password?</a>
+                <a routerLink="/signup">Don't have an account? <b>Sign Up</b></a>
+            </div>
+        </form>
+    </div>
+        <!-- <recaptcha TODO
+        [size]="'invisible'"
+        [hide]="false"
+        (captchaResponse)="onCaptchaResponse($event)"
+    ></recaptcha> -->
+</div>
