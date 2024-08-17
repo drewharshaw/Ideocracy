@@ -1,17 +1,18 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
-// import { SettingsDialogComponent } from '../../dialogs/settings-dialog/settings-dialog.component';
-
-import { AuthService } from '../../../Core/SessionManagement/services/auth.service';
-import { DialogService } from 'primeng/dynamicdialog';
-
 import { FirebaseStorage, ref, getDownloadURL } from '@angular/fire/storage';
+
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { MenuItem } from 'primeng/api';
 
 import { Subscription, from } from 'rxjs';
 import { filter, switchMap } from 'rxjs/operators';
 
-import { MenuItem } from 'primeng/api';
+
+import { AuthService } from '@Core/SessionManagement/services/auth.service';
+import { AuthDialogComponent } from '@Common/Dialog/AuthDialog/auth-dialog.component';
+
 
 
 @Component({
@@ -26,16 +27,18 @@ export class NavbarComponent implements OnInit, OnDestroy {
     photoURL: string;
     admin: boolean;
 
+    ref: DynamicDialogRef | undefined;
+
     leftItems: MenuItem[] = [
         {
-            label: 'Dashboard',
-            routerLink: '/dashboard',
+            label: 'Explore',
+            routerLink: '/explore',
             visible: true
         },
         {
-            label: 'Map',
-            routerLink: '/map',
-            visible: true
+            label: 'Create',
+            routerLink: '/create',
+            visible: false
         },
         {
             label: 'Admin',
@@ -71,18 +74,25 @@ export class NavbarComponent implements OnInit, OnDestroy {
         );
     }
 
+    openAuthDialog() {
+        this.ref = this.dialogService.open(AuthDialogComponent, {
+            header: 'Login',
+            dismissableMask: true,
+            width: '550px',
+            height: '450px'
+        });
+    }
+
+    openSettingsDialog() {
+
+    }
+
     logout() {
         this.authService.signOut().then(
             _ => this.router.navigateByUrl('/')
         );
     }
 
-    showSettingsDialog() {
-        // const ref = this.dialogService.open(SettingsDialogComponent, {
-        //     header: 'Settings',
-        //     dismissableMask: true
-        // });
-    }
 
     ngOnDestroy() {
         this.subscriptions.forEach(x => x.unsubscribe());

@@ -27,25 +27,26 @@ import { AvatarModule } from 'primeng/avatar';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { ToastModule } from 'primeng/toast';
 import { TabViewModule } from 'primeng/tabview';
+import { FloatLabelModule } from 'primeng/floatlabel';
 
 
-import { AppRoutingModule } from 'Core/Routing/app-routing.module';
-import { AppComponent } from 'Core/Bootstrap/Main/app.component';
-import { LoginComponent  } from 'Core/Bootstrap/Login/login.component';
-import { NavbarComponent } from 'Common/Layout/Navbar/navbar.component';
-import { AuthService } from 'Core/SessionManagement/services/auth.service';
-import { SignUpComonent } from 'Core/Bootstrap/SignUp/sign-up.component';
-import { HomeComponent } from 'Features/Home/home.component';
+import { AppRoutingModule } from '@Core/Routing/app-routing.module';
+import { AppComponent } from '@Core/Bootstrap/Main/app.component';
+import { NavbarComponent } from '@Common/Layout/Navbar/navbar.component';
+import { AuthService } from '@Core/SessionManagement/services/auth.service';
+import { HomeComponent } from '@Features/Home/home.component';
 
-import { environment } from 'Environments/environment';
+import { environment } from '@Environments/environment';
+import { AuthDialogComponent } from '@Common/Dialog/AuthDialog/auth-dialog.component';
+import { ExploreComponent } from './Features/Explore/explore.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     NavbarComponent,
-    SignUpComonent,
-    HomeComponent
+    HomeComponent,
+    AuthDialogComponent,
+    ExploreComponent
   ],
   imports: [
     BrowserModule,
@@ -66,6 +67,7 @@ import { environment } from 'Environments/environment';
     DynamicDialogModule,
     ToastModule,
     TabViewModule,
+    FloatLabelModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideStorage(() => getStorage()),

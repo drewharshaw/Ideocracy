@@ -1,0 +1,153 @@
+<div class="login-container">
+    @if (mode === authMode.Login) {
+        <form
+            class="form"
+            [formGroup]="loginForm"
+        >
+            <div class="form-inputs">
+                <div>
+                    <p-floatLabel>
+                        <input
+                            pInputText
+                            formControlName="username"
+                            [id]="id + 'usernameInput'"
+                            class="form-field"
+                            type="text"
+                        />
+                        <label [for]="id + 'usernameInput'">Username</label>
+                    </p-floatLabel>
+                    @if (username.invalid && username.errors &&
+                        (username.dirty || username.touched)) {
+                        <div>
+                            @if (loginForm.get('username').hasError('required')) {
+                                <small class="form-error">
+                                    This field is required.
+                                </small>
+                            }
+                        </div>
+                    }
+                </div>
+                <div>
+                    <p-floatLabel>
+                        <input
+                            pInputText
+                            formControlName="password"
+                            id="float-input"
+                            class="form-field"
+                            type="password"
+                        />
+                        <label for="float-input">Password</label>
+                    </p-floatLabel>
+                    @if (loginPassword.errors && loginPassword.touched) {
+                        <div>
+                            @if (loginPassword.hasError('required')) {
+                            <span class="form-error">
+                                This field is required.
+                            </span>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+            <p-checkbox
+                formControlName="rememberMe"
+                class="form-checkbox"
+                [binary]="true"
+                label="Remember me"
+            ></p-checkbox>
+            <p-button
+                type="submit"
+                class="form-submitButton"
+                label="Sign In"
+                (onClick)="login()"
+            ></p-button>
+            <div class="login-links">
+                <a routerLink="/forgotpassword">Forgot Password?</a>
+                <a (click)="mode = authMode.SignUp">Don't have an account? <b>Sign Up</b></a>
+            </div>
+        </form>
+    } @else if (mode === authMode.SignUp) {
+        <form
+            class="signUpform"
+            [formGroup]="signUpForm"
+        >
+            <div class="formCol p-inputtext-lg signUpform-inputs">
+                <div class="formRow">
+                    <span class="p-float-label">
+                        <input
+                            pInputText
+                            formControlName="firstName"
+                            id="signup-firstName"
+                            class="signUpform-field"
+                            type="text"
+                        />
+                        <label for="float-input">First Name</label>
+                    </span>
+                    <span class="p-float-label">
+                        <input
+                            pInputText
+                            formControlName="lastName"
+                            id="signup-lastName"
+                            class="signUpform-field"
+                            type="text"
+                        />
+                        <label for="float-input">Last Name</label>
+                    </span>
+                </div>
+                <span class="p-float-label">
+                    <input
+                        pInputText
+                        formControlName="email"
+                        id="signup-email"
+                        class="signUpform-field"
+                        type="email"
+                    />
+                    <label for="float-input">Email Address</label>
+                </span>
+                <div>
+                    <span class="signUpform-inputs-row p-float-label ">
+                        <input
+                            pInputText
+                            formControlName="password"
+                            id="signup-password"
+                            class="signUpform-field"
+                            autocomplete="new-password"
+                            [type]="passwordVisible ? 'text': 'password'"
+                        />
+                        <label for="float-input">Password</label>
+                        <button
+                            type="button"
+                            class="signUpform-inputsIcon fas fa-eye"
+                            [ngClass]="{ 'signUpform-inputsIcon--enabled': passwordVisible }"
+                            (click)="toggleShowPassword()"
+                        ></button>
+                    </span>
+                    @if (signUpPassword.invalid && signUpPassword.errors && (signUpPassword.dirty || signUpPassword.touched)) {
+                    <div>
+                        @if (signUpPassword.hasError('pattern')) {
+                        <span class="signUpform-error">
+                            Password must meet requirments
+                        </span>
+                        }
+                        <div class="signup-requirments">
+                            <span [ngClass]="{ 'signup-requirments-green': this.minEight}">• must contain at least 8 characters</span>
+                            <span [ngClass]="{ 'signup-requirments-green': this.oneDigit}">• must contain a number</span>
+                            <span [ngClass]="{ 'signup-requirments-green': this.oneSpecial}">• must contain a special character</span>
+                            <span [ngClass]="{ 'signup-requirments-green': this.lowerCase}">• must contain a lowercase character</span>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+            <p-button
+                type="submit"
+                class="p-button-raised"
+                label="Sign Up"
+                (onClick)="signUp()"
+            ></p-button>
+            <div class="signup-links">
+                <a (click)="mode = authMode.Login">Already have an account? <b>Login</b></a>
+            </div>
+        </form>
+    }
+</div>

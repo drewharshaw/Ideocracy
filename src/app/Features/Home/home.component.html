@@ -1,123 +1,26 @@
 <div class="home">
-    <nav
-        #navbarRef
-        class="navbar"
-        (scroll)="onScroll()"
-        [@fade]="navAnimateState"
-    >
-        <ul class="navbarList-left">
-            <li class="navbarItem">
-                <span class="navbar-company">Ideocracy</span>
-            </li>
-        </ul>
+    <app-navbar></app-navbar>
+    <div class="section section-black">
+        <div class="main-container">
+            <h5 class="main-container-question"> What is Ideocracy? </h5>
+            <h1 class="main-container-heading"> The Future of Political Literacy Is Here</h1>
 
-        <ul class="navbarList-right">
-            <li class="navbarItem">
-                <a
-                    class="navbarItem-link"
-                    routerLink="/login"
-                >
-                    <span> Login </span>
-                </a>
-            </li>
-            <li
-                *ngIf="navAnimateState === animationState.solid else link"
-                class="navbarItem"
+            <div class="main-subcontainer">
+                <span>A knowledge-sharing platform dedicated to identifying societal problems and developing political community-based solutions.</span>
+                <p-button
+                    class="main-subcontainer-button"
+                    label="Explore"
+                    (onClick)="navigateToDashboard()"
+                ></p-button>
 
-            >
-                <button
-                    pButton
-                    type="button"
-                    routerLink="/signup"
-                    class="p-button-outlined"
-                >
-                    Sign Up
-                </button>
-            </li>
-            <ng-template #link>
-                <li class="navbarItem">
-                    <a
-                        class="navbarItem-link"
-                        routerLink="/signup"
-                    >
-                        <span> Sign Up </span>
-                    </a>
-                </li>
-            </ng-template>
-        </ul>
-    </nav>
-
-    <img class="coverPhoto" src="/assets/abstract-sparks.jpg" alt="cover photo"/>
-
-    <div class="main">
+            </div>
+        </div>
+    </div>
+    <div class="section section-white">
 
     </div>
 
     <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-center">
-                <a
-                    class="footer-icon"
-                    href="https://www.linkedin.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <span class="fab fa-linkedin"></span>
-                </a>
-                <a
-                    class="footer-icon"
-                    href="https://www.facebook.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <span class="fab fa-facebook-f"></span>
-                </a>
-                <a
-                    class="footer-icon"
-                    href="https://www.instagram.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <span class="fab fa-instagram"></span>
-                </a>
-                <a
-                    class="footer-icon"
-                    href="https://www.twitter.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <span class="fab fa-x-twitter"></span>
-                </a>
-            </div>
-            <hr class="divider" />
-            <div class="footer-center">
-                <div>
-                    <span> Copyright © </span>
-                    <a
-                        class="footer-link"
-                        routerLink=""
-                    >
-                        Ideocracy LLC.
-                    </a>
-                    <span> {{ year }} </span>
-                </div>
-                <div>
-                    <span
-                        class="footer-link"
-                        (click)="termsVisible=true"
-                    >
-                        Terms
-                    </span>
-                    <span
-                        class="footer-link"
-                        (click)="privacyVisible=true"
-                    >
-                        Privacy
-                    </span>
-                </div>
-            </div>
-        </div>
-
     </footer>
 </div>
 

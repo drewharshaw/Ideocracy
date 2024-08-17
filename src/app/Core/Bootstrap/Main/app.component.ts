@@ -2,10 +2,10 @@ import { Component, OnInit, HostBinding, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
-// import { ThemingService } from 'Common/services/theme.service';
+// import { ThemingService } from '@Common/services/theme.service';
 
 import { filter, map, Subscription } from 'rxjs';
-import { AuthService } from 'Core/SessionManagement/services/auth.service';
+import { AuthService } from '@Core/SessionManagement/services/auth.service';
 
 @Component({
     selector: 'app-root',
@@ -50,7 +50,7 @@ export class AppComponent implements OnInit, OnDestroy {
                 })
             ).subscribe((title: string) => {
                 if (title) {
-                    this.titleService.setTitle(`Adkhrysel - ${title}`);
+                    this.titleService.setTitle(`Ideocracy - ${title}`);
                 }
             }),
             this.authService.currentUser$.subscribe(

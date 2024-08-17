@@ -25,11 +25,11 @@
       "dom"
     ],
     "paths": {
-      "Core/*": ["app/Core/*"],
-      "Common/*": ["app/Common/*"],
-      "Api/*": ["app/Api/*"],
-      "Features/*": ["app/Features/*"],
-      "Environments/*": ["environments/*"]
+      "@Core/*": ["app/Core/*"],
+      "@Common/*": ["app/Common/*"],
+      "@Api/*": ["app/Api/*"],
+      "@Features/*": ["app/Features/*"],
+      "@Environments/*": ["environments/*"]
   },
   },
   "angularCompilerOptions": {

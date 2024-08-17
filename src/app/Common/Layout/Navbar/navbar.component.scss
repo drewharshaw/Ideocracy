@@ -6,36 +6,56 @@
     height: $navbarHeight;
     width: 100%;
 
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     padding: 0px 40px;
     z-index: 1001;
 
-    background-color: $primary-darkBlue;
-    color: white;
+    font-family: 'Open Sans', sans-serif;
     font-size: 1.6rem;
 
-    &-company {
-        font-family: 'Open Sans', sans-serif;
-        font-size: 2.5rem;
-        margin-right: 30px;
+    color: white;
+    background-color: #202123;
+    border-bottom: 1px solid grey;
+
+    &-left {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 40px;
     }
 
-    &Item {
+    &-right {
         display: flex;
+        justify-content: flex-end;
         align-items: center;
-        margin-left: 20px;
+        gap: 20px;
+    }
+
+
+    &Item {
         cursor: pointer;
+
+        &-company {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+
+            color: white;
+            font-size: 2.1rem;
+
+            &Logo {
+                font-size: 2.1rem;
+            }
+        }
 
         &-link {
             text-decoration: none;
             color: unset;
-            font-size: 1.8rem;
-        }
-
-        &-icon {
-            margin-right: 5px;
-            font-size: 1.8rem;
+            font-size: 1.2rem;
         }
 
         &-active {
@@ -44,23 +64,38 @@
             padding-bottom: 3px;
         }
 
+        &-icon {
+            margin-right: 5px;
+            font-size: 1.6rem;
+        }
+
         p-avatar {
             padding-right: 10px;
         }
 
+        &-button {
+            ::ng-deep.p-button-label {
+                color: white;
+                font-size: 1.1rem;
+                font-weight: 600;
+
+                &:hover {
+                    font-weight: 700;
+                }
+            }
+
+        }
 
         &:hover {
-            & > a, p-avatar, & > span {
-                opacity: 0.4;
-                filter: alpha(opacity=40);
-            }
+            opacity: 0.4;
+            filter: alpha(opacity=40);
 
-            div {
-                display: block;
-                visibility: visible;
-                opacity: 1;
-                top: calc($navbarHeight - 27px);
-            }
+            // div { // DPH messes with all navItems, needs to be specific for dropdowns
+            //     display: block;
+            //     visibility: visible;
+            //     opacity: 1;
+            //     top: calc($navbarHeight - 27px);
+            // }
         }
     }
 }
@@ -109,25 +144,5 @@
 
     &-emptyMessage {
         padding-bottom: 10px;
-    }
-}
-
-.list {
-    &-left {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        padding-left: 20px;
-    }
-
-    &-right {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        padding-left: 20px;
-
-        li:last-child {
-            min-width: 95px;
-        }
     }
 }

@@ -1,23 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Muli:400,700');
 
-// :root {
-//     font-family: 'Muli';
-//     font-size: 62.5%; /* making rem calc base 10*/
-// }
 
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
     scrollbar-gutter: stable;
     font-size: 1rem;
+}
+
+body {
+    margin: 0px;
 }
 
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+}
+
+.p-button {
+    padding: unset;
 }
 
 

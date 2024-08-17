@@ -1,27 +1,31 @@
 <nav class="navbar">
-    <ul class="list-left">
-        <li>
-            <a routerLink="" class="navbarItem-link">
-                <span class="navbar-company">Ideocracy</span>
-            </a>
+    <ul class="navbar-left">
+        <li class="navbarItem">
+            <div class="navbarItem-company">
+                <i class="navbarItem-companyLogo fa-brands fa-rebel"></i>
+                <span
+                    class="navbarItem-company"
+                    routerLink=""
+                >
+                    Ideocracy
+                </span>
+            </div>
         </li>
-        <ng-container
-            *ngFor="let item of leftItems; index as i"
-        >
+
+        @for (item of leftItems; track item; let i = $index) {
             <ng-container
                 [ngTemplateOutlet]="navItem"
                 [ngTemplateOutletContext]="{ $implicit: item, idx: i }"
             ></ng-container>
-        </ng-container>
+        }
     </ul>
-        <ul
-            *ngIf="!!(authService.currentUser$ | async)"
-            class="list-right"
-        >
+
+    <ul class="navbar-right">
+        @if (!!(authService.currentUser$ | async)) {
             <li class="navbarItem">
-                <span
+                <i
                     class="navbarItem-icon pi pi-fw pi-bell"
-                ></span>
+                ></i>
                 <div class="subMenu subMenu-large">
                     <ul class="subMenu-container">
                         <a class="subMenu-emptyMessage">
@@ -30,23 +34,24 @@
                     </ul>
                 </div>
             </li>
+
             <li class="navbarItem">
-                <p-avatar
-                    *ngIf="photoURL else profileIcon"
-                    [image]="photoURL"
-                    size="large"
-                    styleClass="navbarItem-icon"
-                ></p-avatar>
-                <ng-template #profileIcon>
-                    <span class="navbarItem-icon pi pi-fw pi-user"></span>
-                </ng-template>
+                @if (photoURL) {
+                    <p-avatar
+                        [image]="photoURL"
+                        size="large"
+                        styleClass="navbarItem-icon"
+                    ></p-avatar>
+                } @else {
+                    <i class="navbarItem-icon pi pi-fw pi-user"></i>
+                }
 
                 <a> {{ fullName }}</a>
                 <div class="subMenu">
                     <ul class="subMenu-container">
                         <li
                             class="subMenu-item"
-                            (click)="showSettingsDialog()"
+                            (click)="openSettingsDialog()"
                         >
                             <span  class="navbarItem-icon pi pi-fw pi-cog"></span>
                             <a class="navbarItem-link">
@@ -65,21 +70,39 @@
                     </ul>
                 </div>
             </li>
-        </ul>
+        } @else {
+            <li class="navbarItem">
+                <p-button
+                    class="navbarItem-button"
+                    label="Login"
+                    [text]="true"
+                    (onClick)="openAuthDialog()"
+                ></p-button>
+            </li>
+
+            <li class="navbarItem">
+                <p-button
+                    class="navbarItem-button"
+                    label="Sign Up"
+                    [text]="true"
+                    (onClick)="openAuthDialog()"
+                ></p-button>
+            </li>
+        }
+
+    </ul>
 </nav>
 
 <ng-template #navItem let-item>
-    <li
-        *ngIf="!!(authService.currentUser$ | async) && item.visible"
-        class="navbarItem"
-    >
-        <a
-            *ngIf="item.routerLink"
-            class="navbarItem-link"
-            routerLinkActive="navbarItem-active"
-            [routerLink]="item.routerLink"
-        >
-            {{ item.label }}
-        </a>
-    </li>
+    @if (item.visible) {
+        <li class="navbarItem">
+            <a
+                class="navbarItem-link"
+                routerLinkActive="navbarItem-active"
+                [routerLink]="item.routerLink"
+            >
+                {{ item.label }}
+            </a>
+        </li>
+    }
 </ng-template>

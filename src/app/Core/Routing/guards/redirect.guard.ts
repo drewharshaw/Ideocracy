@@ -3,7 +3,7 @@ import { ActivatedRouteSnapshot, RouterStateSnapshot, Router, UrlTree } from '@a
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { AuthService } from 'Core/SessionManagement/services/auth.service';
+import { AuthService } from '@Core/SessionManagement/services/auth.service';
 
 /** If user authenticated, reroute to dashboard, otherwise nav continues */
 @Injectable({

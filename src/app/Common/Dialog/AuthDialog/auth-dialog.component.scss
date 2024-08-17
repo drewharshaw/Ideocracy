@@ -1,0 +1,220 @@
+@import '../../../../theme/variables.scss';
+
+
+::ng-deep .p-dialog {
+    &-header {
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    &-title {
+        font-size: 2rem;
+    }
+
+    &-content {
+        padding: 20px;
+    }
+}
+
+
+
+.login {
+    &-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        margin: 0px 40px;
+    }
+
+    &-links {
+        display: flex;
+        flex-direction: column;
+
+        margin-top: 20px;
+
+        a {
+            cursor: pointer;
+            text-decoration: none;
+            color: black;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &-footer {
+        position: absolute;
+        bottom: 0px;
+        width: calc(100vw - 20px);
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    &-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &-inputs {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        // font-size: 1rem;
+
+        // input {
+        //     // height: 45px;
+        //     // font-size: 1rem;
+        // }
+    }
+
+    &-checkbox {
+        margin: 10px 0px;
+        p-checkbox {
+            font-size: 3rem;
+        }
+    }
+
+    &-error {
+        color: red;
+        font-size: 1rem;
+    }
+
+    &-field {
+        width: 100%;
+    }
+
+    &-submitButton {
+        ::ng-deep .p-button {
+            border-radius: 0px;
+            border: 1px solid #FDDA0D; // Cadmium Yellow
+            background-color: #FFBF00; // Amber
+
+            &-label {
+                color: black;
+                padding: 10px;
+            }
+        }
+    }
+}
+
+
+.signup {
+    &-container {
+        position: relative;
+        top: $navbarHeight;
+        min-height: calc(100vh - ($navbarHeight + $footerHeight));
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    &-requirments {
+        display: flex;
+        flex-direction: column;
+        margin-left: 20px;
+        margin-top: 10px;
+        padding: 5px;
+        border-radius: 5px;
+        background-color: $grey_100_F5;
+
+        &-green {
+            color: green;
+        }
+    }
+
+    &-links {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        a {
+            text-decoration: none;
+            color: black;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &-footer {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+    }
+}
+
+.signUpform {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    min-width: 150px;
+    max-width: 400px;
+    width: 80%;
+
+    &-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &-title {
+        padding-bottom: 20px;
+        font-size: 2em;
+    }
+
+    &Row {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    &Col {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    &-inputs {
+        input {
+            font-size: 1rem;
+        }
+        &Icon {
+            position: absolute;
+            right: 13px;
+            border: none;
+            background-color: transparent;
+            color: rgb(168, 168, 168);
+            &:hover {
+                color: black;
+            }
+            &--enabled {
+                color: black;
+            }
+        }
+        &-row {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &-error {
+        color: red;
+        font-size: 1rem;
+    }
+
+    &-field {
+        width: 100%;
+        .p-float-label input:focus ~ label {
+            top: -0.5rem;
+        }
+    }
+}
